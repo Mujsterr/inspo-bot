@@ -3,15 +3,16 @@ import discord
 import scraper
 import asyncio
 
-from dotenv import load_dotenv
+from discord.ext import commands
 
-load_dotenv()
 
-TOKEN = os.getenv('TOKEN')
+
+TOKEN = os.environ.get('TOKEN')
 IMG_LINK = scraper.img_url_grabber()
  
 
 client = discord.Client()
+
 
 @client.event
 async def on_message(message):
