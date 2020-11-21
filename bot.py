@@ -6,10 +6,9 @@ import asyncio
 from discord.ext import commands
 
 
-
-TOKEN = os.environ.get('TOKEN')
+TOKEN = os.environ.get("TOKEN")
 IMG_LINK = scraper.img_url_grabber()
- 
+
 
 client = discord.Client()
 
