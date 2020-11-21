@@ -1,6 +1,7 @@
 import os
 import discord
 import scraper
+import asyncio
 
 from dotenv import load_dotenv
 
@@ -14,7 +15,7 @@ client = discord.Client()
 
 @client.event
 async def on_message(message):
-    if message.content.find(">inpso") != -1:
+    if message.content == ">inpso":
         await message.channel.send("HellO!")
 
 client.run(TOKEN)
