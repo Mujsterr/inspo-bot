@@ -7,22 +7,16 @@ from dotenv import load_dotenv
 
 load_dotenv('.env')
 
-TOKEN = os.getenv("TOKEN")
-#IMG_LINK = scraper.img_url_grabber()
+TOKEN = os.environ.get("TOKEN")
+IMG_LINK = scraper.img_url_grabber()
 
 intents = discord.Intents.all()
 client = discord.Client(intents =intents)
 
-
-@client.event
-async def on_ready():
-    print("Hello!")
-
-
 @client.event
 async def on_message(message):
-    if message.content == ">inpso":
+    if message.content == ">inspo":
         channel = message.channel
-        await channel.send("Hello!")
+        await channel.send(IMG_LINK)
 
 client.run(TOKEN)
