@@ -3,14 +3,15 @@ import discord
 import scraper
 import asyncio
 
-from discord.ext import commands
+from dotenv import load_dotenv
 
+load_dotenv('.env')
 
-TOKEN = os.environ.get("TOKEN")
+TOKEN = os.getenv("TOKEN")
 #IMG_LINK = scraper.img_url_grabber()
-client = commands.Bot(command_prefix= '>')
 
-client = discord.Client()
+intents = discord.Intents.all()
+client = discord.Client(intents =intents)
 
 
 @client.event
@@ -21,6 +22,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.content == ">inpso":
-        await message.channel.send("Hello!")
+        channel = message.channel
+        await channel.send("Hello!")
 
 client.run(TOKEN)
