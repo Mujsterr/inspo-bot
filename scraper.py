@@ -12,7 +12,6 @@ from selenium.common import exceptions
 
 
 def img_url_grabber():
-    DRIVER_PATH = 'D:/chromedriver/chromedriver.exe' 
     IMG_XPATH = './html/body/div[2]/div[1]/div[1]/div[1]/img'
     BTN_XPATH = '/html/body/div[2]/div[1]/div[1]/div[2]/div/div[2]'
     chrome_options = Options()
@@ -25,7 +24,7 @@ def img_url_grabber():
     chrome_options.add_argument("--disable-extensions")    
     chrome_options.headless = True
             
-    driver = webdriver.Chrome(options = chrome_options, executable_path = DRIVER_PATH )#os.environ.get("CHROMEDRIVER_PATH"))
+    driver = webdriver.Chrome(options = chrome_options, executable_path = os.environ.get("CHROMEDRIVER_PATH"))
     driver.get('https://www.inspirobot.me')
 
     WebDriverWait(driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, BTN_XPATH)))
