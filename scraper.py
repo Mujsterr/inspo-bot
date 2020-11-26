@@ -27,11 +27,10 @@ def img_url_grabber():
 
     driver.find_element_by_xpath('/html/body/div[2]/div[1]/div[1]/div[2]/div/div[2]').click()
 
-    #image_src = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div[1]/div[1]/div[1]/img")))
-    time.sleep(2.1)
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div[1]/div[1]/div[1]/img")))
+    
     image_src = driver.find_element_by_xpath( "/html/body/div[2]/div[1]/div[1]/div[1]/img").get_attribute('src')
     
-    #image_src.get_attribute('src')
     driver.quit()
     
     return (image_src)
