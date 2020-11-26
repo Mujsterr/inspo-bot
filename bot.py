@@ -3,6 +3,7 @@ import discord
 import scraper
 import asyncio
 
+from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv('.env')
@@ -10,12 +11,15 @@ load_dotenv('.env')
 TOKEN = os.environ.get("TOKEN")
 
 intents = discord.Intents.all()
-client = discord.Client(intents =intents)
+client = commands.Bot(command_prefix = ';',intents = intents)
 
-@client.event
-async def on_message(message):
-    if message.content == ">inspo":
-        channel = message.channel
-        await channel.send(scraper.img_url_grabber())
+@client.command(aliases = ['I','ins'])
+async def inspire(ctx):
+    embed = discord.Embed(
+        title = 'You have been inspired!',
+        description = scraper.img_url_grabber(),
+        colour = discord.Colour.blurple()
+    )
+    await ctx.send(embed)
 
 client.run(TOKEN)

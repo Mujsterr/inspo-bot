@@ -14,8 +14,6 @@ from selenium.common import exceptions
 def img_url_grabber(): 
     chrome_options = Options()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-   # chrome_options.add_argument("--proxy-server='direct://'")
-   # chrome_options.add_argument("--proxy-bypass-list=*")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.headless = True
@@ -26,7 +24,7 @@ def img_url_grabber():
     driver.find_element_by_xpath('/html/body/div[2]/div[1]/div[1]/div[2]/div/div[2]').click()
 
     #image_src = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div[1]/div[1]/div[1]/img")))
-    time.sleep(2)
+    time.sleep(2.1)
     image_src = driver.find_element_by_xpath( "/html/body/div[2]/div[1]/div[1]/div[1]/img").get_attribute('src')
     
     #image_src.get_attribute('src')
@@ -35,4 +33,4 @@ def img_url_grabber():
     return (image_src)
 
 
-
+print(img_url_grabber)
