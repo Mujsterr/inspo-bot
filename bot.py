@@ -25,8 +25,8 @@ async def inspire(ctx):
         description = 'You have been inspired!',
         colour = discord.Colour.from_rgb(127, 101, 164)
     )
-    emoji ="\N{THUMBS UP SIGN}"
-    
+    #emoji ="\N{THUMBS UP SIGN}"
+    #Context.message.add_reaction(emoji)
     embed.set_image(url = IMG_LINK)
     await ctx.send(embed = embed)
 
