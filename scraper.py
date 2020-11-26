@@ -25,7 +25,7 @@ def img_url_grabber():
     driver = webdriver.Chrome(options = chrome_options, executable_path = os.environ.get("CHROMEDRIVER_PATH"))
     driver.get('https://www.inspirobot.me')
 
-    WebDriverWait(driver, 20, 0.5).until(EC.visibility_of_element_located((By.XPATH, BTN_XPATH)))
+    WebDriverWait(driver, 20, 0.5).until(EC.element_to_be_clickable((By.XPATH, BTN_XPATH)))
     driver.find_element_by_xpath(BTN_XPATH).click()
     image_src = WebDriverWait(driver, 20, 0.5).until(EC.visibility_of_element_located((By.XPATH, IMG_XPATH))).get_attribute('src')
      
