@@ -15,9 +15,10 @@ client = commands.Bot(command_prefix = ';',intents = intents)
 
 @client.command(aliases = ['I','ins'])
 async def inspire(ctx):
+    IMG_LINK = scraper.img_url_grabber()
     embed = discord.Embed(
         title = 'You have been inspired!',
-        description = scraper.img_url_grabber(),
+        description = IMG_LINK,
         colour = discord.Colour.blurple()
     )
     await ctx.send(embed = embed)
