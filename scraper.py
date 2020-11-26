@@ -11,7 +11,10 @@ from selenium.webdriver.common.by import By
 from selenium.common import exceptions
 
 
-def img_url_grabber(): 
+def img_url_grabber():
+    DRIVER_PATH = 'D:/chromedriver/chromedriver.exe' 
+    IMG_XPATH = './html/body/div[2]/div[1]/div[1]/div[1]/img'
+    BTN_XPATH = '/html/body/div[2]/div[1]/div[1]/div[2]/div/div[2]'
     chrome_options = Options()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chrome_options.add_argument("--disable-dev-shm-usage")
@@ -22,18 +25,18 @@ def img_url_grabber():
     chrome_options.add_argument("--disable-extensions")    
     chrome_options.headless = True
             
-    driver = webdriver.Chrome(options = chrome_options, executable_path = os.environ.get("CHROMEDRIVER_PATH"))
+    driver = webdriver.Chrome(options = chrome_options, executable_path = DRIVER_PATH )#os.environ.get("CHROMEDRIVER_PATH"))
     driver.get('https://www.inspirobot.me')
 
-    driver.find_element_by_xpath('/html/body/div[2]/div[1]/div[1]/div[2]/div/div[2]').click()
-
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div[1]/div[1]/div[1]/img")))
+    WebDriverWait(driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, BTN_XPATH)))
+    driver.find_element_by_xpath(BTN_XPATH).click()
     
-    image_src = driver.find_element_by_xpath( "/html/body/div[2]/div[1]/div[1]/div[1]/img").get_attribute('src')
+    WebDriverWait(driver, 10, 1).until(EC.presence_of_element_located((By.XPATH, IMG_XPATH)))                                  
+    image_src = driver.find_element_by_xpath(IMG_XPATH).get_attribute('src')
     
     driver.quit()
     
     return (image_src)
 
 
-print(img_url_grabber)
+print(img_url_grabber())
