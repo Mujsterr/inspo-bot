@@ -11,7 +11,11 @@ load_dotenv('.env')
 TOKEN = os.environ.get("TOKEN")
 
 intents = discord.Intents.all()
-client = commands.Bot(command_prefix = ';',intents = intents)
+client = commands.Bot(command_prefix = ';', intents = intents)
+
+@client.event
+async def on_ready():
+    await client.change_presence(activity = discord.Activity(type = discord.ActivityType.streaming, name = "inspiration"))
 
 @client.command(aliases = ['I','ins'])
 async def inspire(ctx):
@@ -21,6 +25,8 @@ async def inspire(ctx):
         description = 'You have been inspired!',
         colour = discord.Colour.from_rgb(127, 101, 164)
     )
+    emoji ="\N{THUMBS UP SIGN}"
+    ctx.add_reaction(emoji)
     embed.set_image(url = IMG_LINK)
     await ctx.send(embed = embed)
 
