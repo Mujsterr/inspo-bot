@@ -16,6 +16,10 @@ def img_url_grabber():
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("start-maximized")
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument("disable-infobars")
+    chrome_options.add_argument("--disable-extensions")    
     chrome_options.headless = True
             
     driver = webdriver.Chrome(options = chrome_options, executable_path = os.environ.get("CHROMEDRIVER_PATH"))
