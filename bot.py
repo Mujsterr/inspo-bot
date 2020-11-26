@@ -17,8 +17,9 @@ client = commands.Bot(command_prefix = ';',intents = intents)
 async def inspire(ctx):
     IMG_LINK = scraper.img_url_grabber()
     embed = discord.Embed(
-        title = 'You have been inspired!',
-        colour = discord.Colour.from_rgb(135, 248, 239)
+        title = 'InspiroBot',
+        description = 'You have been inspired!',
+        colour = discord.Colour.from_rgb(127, 101, 164)
     )
     embed.set_image(url = IMG_LINK)
     await ctx.send(embed = embed)
