@@ -18,7 +18,7 @@ async def inspire(ctx):
     IMG_LINK = scraper.img_url_grabber()
     embed = discord.Embed(
         title = 'You have been inspired!',
-        colour = '87f8ef'
+        colour = discord.Colour.from_rgb(135, 248, 239)
     )
     embed.set_image(url = IMG_LINK)
     await ctx.send(embed = embed)
