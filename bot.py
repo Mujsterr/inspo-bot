@@ -20,6 +20,6 @@ async def inspire(ctx):
         description = scraper.img_url_grabber(),
         colour = discord.Colour.blurple()
     )
-    await ctx.send(embed)
+    await ctx.send(embed = embed)
 
 client.run(TOKEN)
