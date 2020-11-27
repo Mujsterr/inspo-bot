@@ -13,12 +13,12 @@ def img_url_grabber():
     IMG_XPATH = '//*[@id="top"]/div[1]/div[1]/img'
     BTN_XPATH = '/html/body/div[2]/div[1]/div[1]/div[2]/div'
     chrome_options = Options()
+    chrome_options.add_argument('--no-sandbox')
     chrome_options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('start-maximized')
+    chrome_options.add_argument('--start-maximized')
     chrome_options.add_argument('--disable-gpu')
-    chrome_options.add_argument('disable-infobars')
+    chrome_options.add_argument('--disable-infobars')
     chrome_options.add_argument('--disable-extensions')    
     chrome_options.headless = True
             
