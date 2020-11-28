@@ -29,7 +29,7 @@ async def inspire(ctx):
     )
     #emoji ="\N{THUMBS UP SIGN}"
     #Context.message.add_reaction(emoji)
-    embed.set_image(url = scraper.img_url_grabber())
+    embed.set_image(url = IMG_LINK)
     await ctx.send(embed = embed)
 
     tz = timezone('US/Eastern')
