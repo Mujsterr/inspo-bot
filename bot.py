@@ -35,6 +35,6 @@ async def inspire(ctx):
 async def reaction(message):
     if message in (';I', ';ins'):
             emoji ="\N{THUMBS UP SIGN}"
-    await message.add_reaction(emoji) 
+    await client.add_reaction(message, emoji) 
     
 client.run(TOKEN)
