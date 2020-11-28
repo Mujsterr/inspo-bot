@@ -27,6 +27,6 @@ def img_url_grabber():
     WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[2]/div[1]/div[1]/div[2]/div'))).click()
     image_src = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="top"]/div[1]/div[1]/img'))).get_attribute('src')
      
-    driver.quit()
+    driver.close()
     
     return (image_src)
