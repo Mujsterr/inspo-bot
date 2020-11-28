@@ -18,7 +18,6 @@ def img_url_grabber():
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_argument('--start-maximized')
     chrome_options.add_argument('--disable-gpu')
-    chrome_options.add_argument('--disable-infobars')
     chrome_options.add_argument('--disable-extensions')    
     chrome_options.headless = True
             
