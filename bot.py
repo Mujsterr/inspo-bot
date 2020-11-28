@@ -20,19 +20,18 @@ async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.playing, name = "inspiration"))
 
 @client.command(aliases = ['I','ins'])
-async def inspire(ctx):
+async def inspire(ctx, message):
     IMG_LINK = scraper.img_url_grabber()
     embed = discord.Embed(
         title = 'InspiroBot',
         description = 'You have been inspired!',
         colour = discord.Colour.from_rgb(127, 101, 164)
     )
-    #emoji ="\N{THUMBS UP SIGN}"
-    #Context.message.add_reaction(emoji)
     embed.set_image(url = IMG_LINK)
+    emoji ="\N{THUMBS UP SIGN}"
+    message.add_reaction(emoji)
+    
     await ctx.send(embed = embed)
-
-    tz = timezone('US/Eastern')
-    aiocron.crontab('0 15 * * *', func= inspire, tz = tz) 
-
+  
+    
 client.run(TOKEN)
