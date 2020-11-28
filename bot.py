@@ -21,7 +21,7 @@ async def on_ready():
 
 @client.command(aliases = ['I','ins'])
 async def inspire(ctx):
-    #IMG_LINK = scraper.img_url_grabber()
+    IMG_LINK = scraper.img_url_grabber()
     embed = discord.Embed(
         title = 'InspiroBot',
         description = 'You have been inspired!',
@@ -29,7 +29,7 @@ async def inspire(ctx):
     )
     #emoji ="\N{THUMBS UP SIGN}"
     #Context.message.add_reaction(emoji)
-    #embed.set_image(url = scraper.img_url_grabber())
+    embed.set_image(url = scraper.img_url_grabber())
     await ctx.send(embed = embed)
 
     tz = timezone('US/Eastern')
