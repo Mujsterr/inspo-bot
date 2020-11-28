@@ -20,7 +20,7 @@ async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.playing, name = "inspiration"))
 
 @client.command(aliases = ['I','ins'])
-async def inspire(ctx, message):
+async def inspire(ctx):
     IMG_LINK = scraper.img_url_grabber()
     embed = discord.Embed(
         title = 'InspiroBot',
@@ -28,10 +28,13 @@ async def inspire(ctx, message):
         colour = discord.Colour.from_rgb(127, 101, 164)
     )
     embed.set_image(url = IMG_LINK)
-    emoji ="\N{THUMBS UP SIGN}"
-    message.add_reaction(emoji)
-    
+
     await ctx.send(embed = embed)
-  
+
+@client.event
+async def reaction(message):
+    if message in (';I', ';ins'):
+            emoji ="\N{THUMBS UP SIGN}"
+    await message.add_reaction(emoji) 
     
 client.run(TOKEN)
