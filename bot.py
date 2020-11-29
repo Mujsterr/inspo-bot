@@ -20,13 +20,12 @@ client = commands.Bot(command_prefix = ';', intents = intents, help_command = No
 @client.event
 async def on_guild_join(guild):
     embed = discord.Embed(
-                title = 'InspiroBot',
                 description = 'Say hello to InspiroBot! \U0001F44B, type `;help` to get started.',
                 colour = discord.Colour.from_rgb(127, 101, 164)
                 )
+    embed.set_author(name = 'InspiroBot', icon_url = 'https://media.discordapp.net/attachments/770804416252870677/782629864917565440/unknown.png?width=771&height=609')
     
     general = find(lambda x: x.name == 'general',  guild.text_channels)
-    
     if general and general.permissions_for(guild.me).send_messages:
         await general.send(embed = embed)
         
@@ -37,10 +36,11 @@ async def on_ready():
 @client.command()
 async def help(ctx):
   embed = discord.Embed(
-        title = 'InspiroBot - Help is here!',
+        title = '- Help is here!',
         description = 'InspiroBot graces your Discord server by sending motivational humorous quotes from `inspirobot.me`.\n\n Use `;I` `;ins` or `;inspire` to get started.\n\n InspiroBot will greet you with a \U0001F44D and some nonsensical inspiration!\n',
         colour = discord.Colour.from_rgb(127, 101, 164)
     )
+  embed.set_author(name = 'InspiroBot', icon_url = 'https://media.discordapp.net/attachments/770804416252870677/782629864917565440/unknown.png?width=771&height=609')
   embed.add_field(name = 'Add to discord', value = 'InspiroBot can be added to your server too! ' + INV_LINK)
   await ctx.send(embed = embed)
     
@@ -50,11 +50,11 @@ async def inspire(ctx):
     
     IMG_LINK = scraper.img_url_grabber()
     embed = discord.Embed(
-        title = 'InspiroBot',
         description = '`You have been inspired!`',
         colour = discord.Colour.from_rgb(127, 101, 164)
     )
     embed.set_image(url = IMG_LINK)
+    embed.set_author(name = 'InspiroBot', icon_url = 'https://media.discordapp.net/attachments/770804416252870677/782629864917565440/unknown.png?width=771&height=609')
     
     await ctx.send(embed = embed)
     await ctx.message.add_reaction("\U00002705")
