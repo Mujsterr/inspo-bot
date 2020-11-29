@@ -33,7 +33,7 @@ async def inspire(ctx):
     await ctx.send(embed = embed)
 
 @client.event
-async def react_on_message(message):
+async def on_message(message):
     emoji ="\U0001F44D"
     if message.content in (';I', ';ins'):
         await message.add_reaction(emoji) 
