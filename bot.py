@@ -21,21 +21,17 @@ async def on_ready():
 
 @client.command(aliases = ['I','ins'])
 async def inspire(ctx):
-    await ctx.message.add_reaction()
+    emoji ="\U0001F44D"
+    await ctx.message.add_reaction(emoji)
+    
     IMG_LINK = scraper.img_url_grabber()
     embed = discord.Embed(
         title = 'InspiroBot',
-        description = 'You have been inspired!',
+        description = '`You have be inspired`',
         colour = discord.Colour.from_rgb(127, 101, 164)
     )
     embed.set_image(url = IMG_LINK)
     
     await ctx.send(embed = embed)
-
-@client.event
-async def on_message(message):
-    emoji ="\U0001F44D"
-    if message.content in (';I', ';ins'):
-        await message.add_reaction(emoji) 
     
 client.run(TOKEN)
