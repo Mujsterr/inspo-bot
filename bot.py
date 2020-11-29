@@ -13,12 +13,22 @@ load_dotenv('.env')
 TOKEN = os.environ.get("TOKEN")
 
 intents = discord.Intents.all()
-client = commands.Bot(command_prefix = ';', intents = intents)
+client = commands.Bot(command_prefix = ';', intents = intents, help_command = None )
+
 
 @client.event
 async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.playing, name = "inspiration"))
 
+@client.command()
+async def help(ctx):
+  embed = discord.Embed(
+        title = 'InspiroBot - Help is here!',
+        description = 'InspiroBot graces your Discord server by sending motivational humorous quotes.\n\n Use `;I` `;ins` or `;inspire` to get started.\n\n InspiroBot will greet you with a \U0001F44D',
+        colour = discord.Colour.from_rgb(127, 101, 164)
+    )
+  await ctx.send(embed = embed)
+    
 @client.command(aliases = ['I','ins'])
 async def inspire(ctx):
     await ctx.message.add_reaction("\U0001F44D")
@@ -26,7 +36,7 @@ async def inspire(ctx):
     IMG_LINK = scraper.img_url_grabber()
     embed = discord.Embed(
         title = 'InspiroBot',
-        description = '`You have be inspired!`',
+        description = '`You have been inspired!`',
         colour = discord.Colour.from_rgb(127, 101, 164)
     )
     embed.set_image(url = IMG_LINK)
