@@ -24,7 +24,7 @@ async def on_ready():
 async def help(ctx):
   embed = discord.Embed(
         title = 'InspiroBot - Help is here!',
-        description = 'InspiroBot graces your Discord server by sending motivational humorous quotes from `inspirobot.me`.\n\n Use `;I` `;ins` or `;inspire` to get started.\n\n InspiroBot will greet you with a \U0001F44D and some inspiration',
+        description = 'InspiroBot graces your Discord server by sending motivational humorous quotes from `inspirobot.me`.\n\n Use `;I` `;ins` or `;inspire` to get started.\n\n InspiroBot will greet you with a \U0001F44D and some inspiration!',
         colour = discord.Colour.from_rgb(127, 101, 164)
     )
   await ctx.send(embed = embed)
