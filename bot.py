@@ -33,9 +33,9 @@ async def inspire(ctx):
     await ctx.send(embed = embed)
 
 @client.event
-async def reaction(message):
+async def react_on_message(message):
     emoji ="👍"
     if message.content in (';I', ';ins'):
-        await message.add_reaction(emoji) 
+        await client.add_reaction(message, emoji) 
     
 client.run(TOKEN)
