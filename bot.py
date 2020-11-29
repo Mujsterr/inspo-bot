@@ -20,10 +20,11 @@ client = commands.Bot(command_prefix = ';', intents = intents, help_command = No
 @client.event
 async def on_guild_join(guild):
     embed = discord.Embed(
-                description = 'Say hello to InspiroBot! \U0001F44B, type `;help` to get started.',
+                description = 'Say hello to InspiroBot!, type `;help` to get started.',
                 colour = discord.Colour.from_rgb(127, 101, 164)
                 )
     embed.set_author(name = 'InspiroBot', icon_url = 'https://media.discordapp.net/attachments/770804416252870677/782629864917565440/unknown.png?width=771&height=609')
+    embed.set_thumbnail(url = 'https://discord.com/assets/df7ba0f4020ca70048a0226d1dfa73f6.svg')
     
     general = find(lambda x: x.name == 'general',  guild.text_channels)
     if general and general.permissions_for(guild.me).send_messages:
@@ -36,11 +37,11 @@ async def on_ready():
 @client.command()
 async def help(ctx):
   embed = discord.Embed(
-        title = '- Help is here!',
         description = 'InspiroBot graces your Discord server by sending motivational humorous quotes from `inspirobot.me`.\n\n Use `;I` `;ins` or `;inspire` to get started.\n\n InspiroBot will greet you with a \U0001F44D and some nonsensical inspiration!\n',
         colour = discord.Colour.from_rgb(127, 101, 164)
     )
-  embed.set_author(name = 'InspiroBot', icon_url = 'https://media.discordapp.net/attachments/770804416252870677/782629864917565440/unknown.png?width=771&height=609')
+  embed.set_author(name = 'InspiroBot - Help is here!', icon_url = 'https://media.discordapp.net/attachments/770804416252870677/782629864917565440/unknown.png?width=771&height=609')
+  embed.set_thumbnail(url = 'https://media.discordapp.net/attachments/778770571130568704/782682275711549470/PinClipart.com_question-mark-clipart_5294773.png?width=609&height=609')
   embed.add_field(name = 'Add to discord', value = 'InspiroBot can be added to your server too! ' + INV_LINK)
   await ctx.send(embed = embed)
     
@@ -55,7 +56,7 @@ async def inspire(ctx):
     )
     embed.set_image(url = IMG_LINK)
     embed.set_author(name = 'InspiroBot', icon_url = 'https://media.discordapp.net/attachments/770804416252870677/782629864917565440/unknown.png?width=771&height=609')
-    
+    embed.set_thumbnail(url ='https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Quotation_marks.svg/512px-Quotation_marks.svg.png')
     await ctx.send(embed = embed)
     await ctx.message.add_reaction("\U00002705")
     
