@@ -22,6 +22,7 @@ def img_url_grabber():
     chrome_options.headless = True
             
     driver = webdriver.Chrome(options = chrome_options, executable_path = os.environ.get("CHROMEDRIVER_PATH"))
+    driver.implicitly_wait(10)
     driver.get('https://www.inspirobot.me')
 
     WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[2]/div[1]/div[1]/div[2]/div'))).click()
