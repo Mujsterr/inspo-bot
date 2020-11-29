@@ -16,6 +16,17 @@ INV_LINK = os.environ.get("INV_LINK")
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix = ';', intents = intents, help_command = None )
 
+@client.event
+async def on_guild_join(guild):
+    for channel in guild.text_channels:
+        if channel.permissions_for(guild.me).send_messages:
+            embed = discord.Embed(
+                title = 'InspiroBot',
+                description = 'Say hello to InspiroBot! \U0001F44B, type `;help` to get started.',
+                colour = discord.Colour.from_rgb(127, 101, 164)
+            )
+            await channel.send(embed = embed)
+        break
 
 @client.event
 async def on_ready():
