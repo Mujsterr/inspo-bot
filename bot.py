@@ -18,13 +18,13 @@ client = commands.Bot(command_prefix = ';', intents = intents, help_command = No
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity = discord.Activity(type = discord.ActivityType.playing, name = "inspiration"))
+    await client.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = ";help"))
 
 @client.command()
 async def help(ctx):
   embed = discord.Embed(
         title = 'InspiroBot - Help is here!',
-        description = 'InspiroBot graces your Discord server by sending motivational humorous quotes from `inspirobot.me`.\n\n Use `;I` `;ins` or `;inspire` to get started.\n\n InspiroBot will greet you with a \U0001F44D and some inspiration!',
+        description = 'InspiroBot graces your Discord server by sending motivational humorous quotes from `inspirobot.me`.\n\n Use `;I` `;ins` or `;inspire` to get started.\n\n InspiroBot will greet you with a \U0001F44D and some nonsensical inspiration!',
         colour = discord.Colour.from_rgb(127, 101, 164)
     )
   await ctx.send(embed = embed)
