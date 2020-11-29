@@ -6,6 +6,7 @@ import aiocron
 
 from pytz import timezone
 from discord.ext import commands
+from discord.utils import find
 from dotenv import load_dotenv
 
 load_dotenv('.env')
@@ -18,16 +19,17 @@ client = commands.Bot(command_prefix = ';', intents = intents, help_command = No
 
 @client.event
 async def on_guild_join(guild):
-    for channel in guild.text_channels:
-        if channel.permissions_for(guild.me).send_messages:
-            embed = discord.Embed(
+    embed = discord.Embed(
                 title = 'InspiroBot',
                 description = 'Say hello to InspiroBot! \U0001F44B, type `;help` to get started.',
                 colour = discord.Colour.from_rgb(127, 101, 164)
-            )
-            await channel.send(embed = embed)
-        break
-
+                )
+    
+    general = find(lambda x: x.name == 'general',  guild.text_channels)
+    
+    if general and general.permissions_for(guild.me).send_messages:
+        await general.send(embed = embed)
+        
 @client.event
 async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.playing, name = ";help"))
