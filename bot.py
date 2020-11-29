@@ -18,7 +18,7 @@ client = commands.Bot(command_prefix = ';', intents = intents, help_command = No
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = ";help"))
+    await client.change_presence(activity = discord.Activity(type = discord.ActivityType.playing, name = ";help"))
 
 @client.command()
 async def help(ctx):
