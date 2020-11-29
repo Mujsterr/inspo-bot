@@ -35,6 +35,6 @@ async def inspire(ctx):
 async def reaction(message):
     emoji ="👍"
     if message in (';I', ';ins'):
-        await message.add_reaction(message, emoji) 
+        await message.add_reaction(emoji) 
     
 client.run(TOKEN)
