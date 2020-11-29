@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 load_dotenv('.env')
 
 TOKEN = os.environ.get("TOKEN")
+INV_LINK = os.environ.get("INV_LINK")
 
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix = ';', intents = intents, help_command = None )
@@ -27,7 +28,7 @@ async def help(ctx):
         description = 'InspiroBot graces your Discord server by sending motivational humorous quotes from `inspirobot.me`.\n\n Use `;I` `;ins` or `;inspire` to get started.\n\n InspiroBot will greet you with a \U0001F44D and some nonsensical inspiration!\n',
         colour = discord.Colour.from_rgb(127, 101, 164)
     )
-  embed.add_field(name = 'Add to discord', value = 'InspiroBot can be added to your server too! [Click here to invite.](https://discord.com/api/oauth2/authorize?client_id=773097512499150849&permissions=11344&scope=bot)')
+  embed.add_field(name = 'Add to discord', value = 'InspiroBot can be added to your server too! ' + INV_LINK)
   await ctx.send(embed = embed)
     
 @client.command(aliases = ['I','ins'])
