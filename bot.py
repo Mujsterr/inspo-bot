@@ -2,9 +2,7 @@ import os
 import discord
 import scraper
 import asyncio
-import aiocron
 
-from pytz import timezone
 from discord.ext import commands 
 from discord.utils import find
 from dotenv import load_dotenv
@@ -46,7 +44,7 @@ async def help(ctx):
   await ctx.send(embed = embed)
     
 @client.command(aliases = ['I','ins'])
-@commands.cooldown(3, 5, commands.BucketType.user)
+@commands.cooldown(2, 5.0, commands.BucketType.user)
 async def inspire(ctx):
     await ctx.message.add_reaction("\U0001F44D")
     
