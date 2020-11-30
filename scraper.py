@@ -20,7 +20,7 @@ def img_url_grabber():
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--disable-extensions')    
     chrome_options.headless = True
-            
+        
     driver = webdriver.Chrome(options = chrome_options, executable_path = os.environ.get("CHROMEDRIVER_PATH"))
     driver.implicitly_wait(10)
     driver.get('https://www.inspirobot.me')
