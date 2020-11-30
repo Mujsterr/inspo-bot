@@ -65,7 +65,7 @@ async def inspire(ctx):
 async def inspire_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         embed = discord.Embed(
-            description = discord.ext.commands.errors.CommandOnCooldown,
+            description = str(error),
             colour = discord.Colour.from_rgb(127, 101, 164)
         )
         embed.set_author(name = 'InspiroBot', icon_url = 'https://media.discordapp.net/attachments/770804416252870677/782629864917565440/unknown.png?width=771&height=609')
