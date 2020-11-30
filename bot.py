@@ -60,5 +60,14 @@ async def inspire(ctx):
     embed.set_thumbnail(url ='https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Quotation_marks.svg/512px-Quotation_marks.svg.png')
     await ctx.send(embed = embed)
     await ctx.message.add_reaction("\U00002705")
-    
+
+@client.event
+async def is_on_cooldwon(ctx):
+    embed = discord.Embed(
+        description ="Command on cooldown, Please try again later",
+        colour = discord.Colour.from_rgb(127, 101, 164)s
+    )
+    embed.set_author(name = 'InspiroBot', icon_url = 'https://media.discordapp.net/attachments/770804416252870677/782629864917565440/unknown.png?width=771&height=609')
+    await ctx.send(embed = embed)
+
 client.run(TOKEN)
