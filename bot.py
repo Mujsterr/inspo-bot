@@ -65,7 +65,7 @@ async def inspire(ctx):
 async def is_on_cooldwon(ctx):
     embed = discord.Embed(
         description ="Command on cooldown, Please try again later",
-        colour = discord.Colour.from_rgb(127, 101, 164)s
+        colour = discord.Colour.from_rgb(127, 101, 164)
     )
     embed.set_author(name = 'InspiroBot', icon_url = 'https://media.discordapp.net/attachments/770804416252870677/782629864917565440/unknown.png?width=771&height=609')
     await ctx.send(embed = embed)
