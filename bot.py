@@ -62,7 +62,7 @@ async def inspire(ctx):
     await ctx.message.add_reaction("\U00002705")
 
 @client.event
-async def is_on_cooldwon(ctx):
+async def is_on_cooldown(ctx):
     embed = discord.Embed(
         description ="Command on cooldown, Please try again later",
         colour = discord.Colour.from_rgb(127, 101, 164)
