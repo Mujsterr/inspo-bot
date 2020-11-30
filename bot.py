@@ -46,7 +46,7 @@ async def help(ctx):
   await ctx.send(embed = embed)
     
 @client.command(aliases = ['I','ins'])
-@commands.cooldown(3, 5, commands.BucketType.guild)
+@commands.cooldown(3, 5, commands.BucketType.user)
 async def inspire(ctx):
     await ctx.message.add_reaction("\U0001F44D")
     
@@ -61,13 +61,14 @@ async def inspire(ctx):
     await ctx.send(embed = embed)
     await ctx.message.add_reaction("\U00002705")
 
-@client.event
-async def is_on_cooldown(ctx):
-    embed = discord.Embed(
-        description ="Command on cooldown, Please try again later",
-        colour = discord.Colour.from_rgb(127, 101, 164)
-    )
-    embed.set_author(name = 'InspiroBot', icon_url = 'https://media.discordapp.net/attachments/770804416252870677/782629864917565440/unknown.png?width=771&height=609')
-    await ctx.send(embed = embed)
+@inspire.error
+async def inspire_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        embed = discord.Embed(
+            description = error,
+            colour = discord.Colour.from_rgb(127, 101, 164)
+        )
+        embed.set_author(name = 'InspiroBot', icon_url = 'https://media.discordapp.net/attachments/770804416252870677/782629864917565440/unknown.png?width=771&height=609')
+        await ctx.send(embed = embed)
 
 client.run(TOKEN)
